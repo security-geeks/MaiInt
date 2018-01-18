@@ -4,7 +4,7 @@ Author: @vysecurity
 
 # Change Log
 
-[v0.1 BETA 01-01-2018]
+[v0.1 ALPHA 01-01-2018]
 Additions:
 * Initial Release
 
