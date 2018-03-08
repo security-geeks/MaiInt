@@ -24,16 +24,14 @@ MAIINT_PAGE = 0
 MAIINT_COUNT_SET = False
 MAIINT_USERAGENT = "Mozilla/5.0 (iPhone; CPU iPhone OS 11_2_1 like Mac OS X) AppleWebKit/604.4.7 (KHTML, like Gecko) Mobile/15C153/{iPhone10,4} [iOS 11.2.1]/MaiMai 4.18.0(4.18.0.4)"
 
-
-MAIINT_ACCESS_TOKEN = ""
-MAIINT_USERID = ""	
-
 # The following variables can be modified as required for authentication
 # Phone number must be CC-NNNNNNNNNN (cc: country code, nn: number)
-MAIINT_PHONE_NUMBER = "+44-0000000000" # Fill in your MaiMai phone number
-MAIINT_PASSWORD = "112112" # Fill in your MaiMai password
+MAIINT_PHONE_NUMBER = "+44-NNNNNNNNNN"
+MAIINT_PASSWORD = "000000"
 
-HUNTER_API_KEY = ""	# Fill in Hunter.io API key
+MAIINT_ACCESS_TOKEN = ""
+MAIINT_USERID = ""
+HUNTER_API_KEY = "YOURKEYHERE"
 
 ### CONFIGURATION END ###
 
@@ -368,13 +366,19 @@ def write_html(parsedUsers):
 		if prefix == "firstlast":
 			user = '{}{}{}'.format(fname,mname,lname)
 		if prefix == "firstmlast":
-			user = '{}{}{}'.format(fname, mname[0], lname)
+			if len(mname) == 0:
+				user = '{}{}{}'.format(fname, mname, lname)
+			else:
+				user = '{}{}{}'.format(fname, mname[0], lname)
 		if prefix == "flast":
 			user = '{}{}'.format(fname[0], lname)
 		if prefix == "first.last":
 			user = '{}{}.{}'.format(fname,mname,lname)
 		if prefix == "fmlast":
-			user = '{}{}{}'.format(fname[0], mname[0], lname)
+			if len(mname) == 0:
+				user = '{}{}{}'.format(fname[0], mname, lname)
+			else:
+				user = '{}{}{}'.format(fname[0], mname[0], lname)
 		if prefix == "lastfirst":
 			user = '{}{}{}'.format(lname,fname,mname)
 
